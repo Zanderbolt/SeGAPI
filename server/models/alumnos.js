@@ -10,7 +10,8 @@ const alumnoSchema = new Schema( {
     grado:              { type: String, required: true },
     grupo:              { type: String, required: true },
     correo:             { type: String, required: true },
-    escenario_asignado: { type: String, required: true }
+    escenario_asignado: { type: String, required: true },
+    password:           { type: String, required: true },
 });
 
 module.exports = mongoose.model('alumno', alumnoSchema);

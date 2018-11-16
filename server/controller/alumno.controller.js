@@ -48,8 +48,4 @@ alumnosController.deleteAlumno =   async(req, res) => {
     });
 };
 
-
-
-
-
 module.exports = alumnosController;

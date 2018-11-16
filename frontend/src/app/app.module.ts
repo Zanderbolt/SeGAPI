@@ -1,6 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 
+// FORMS
+import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
+
+// HTTPclient
+import {HttpClientModule} from '@angular/common/http'
 // Rutas
 import { Routes, RouterModule } from '@angular/router'
 
@@ -15,6 +20,8 @@ import { Unidad02Component } from './components/escenarios/unidad02/unidad02.com
 import { Unidad03Component } from './components/escenarios/unidad03/unidad03.component';
 import { Unidad04Component } from './components/escenarios/unidad04/unidad04.component';
 import { MenuComponent } from './components/escenarios/menu/menu.component';
+import { RegisterComponent } from './components/register/register.component';
+import { from } from 'rxjs';
 
 const appRoutes: Routes = [
   {  path: '', component:  HomeComponent },
@@ -23,7 +30,8 @@ const appRoutes: Routes = [
   {  path: 'unidad01', component:  Unidad01Component },
   {  path: 'unidad02', component:  Unidad02Component },
   {  path: 'unidad03', component:  Unidad03Component },
-  {  path: 'unidad04', component:  Unidad04Component }
+  {  path: 'unidad04', component:  Unidad04Component },
+  {  path: 'register', component:  RegisterComponent },
 ]
 
 @NgModule({
@@ -38,11 +46,14 @@ const appRoutes: Routes = [
     Unidad02Component,
     Unidad03Component,
     Unidad04Component,
-    MenuComponent    
+    MenuComponent,
+    RegisterComponent     
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
