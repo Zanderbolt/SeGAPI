@@ -16,10 +16,12 @@ alumnosController.getAlumno = async (req, res) => {
 // Guardar un alumno
 alumnosController.createAlumno =  async (req, res) => {
     const alumno = new Alumno(req.body);
-    await alumno.save();
-    res.json({
-        'status': 'Empleado Guardado'
-    });
+    await alumno.save((err, task) => {
+        if (err) {
+          res.status(500).send(err);
+        }
+        res.status(201).json(task);
+      });
 };
 // Update un alumno
 alumnosController.updateAlumno =  async (req, res) => {

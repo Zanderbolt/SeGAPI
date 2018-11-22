@@ -17,11 +17,20 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  agregarAlumno(form: NgForm) {
+    this.alumnosService.postAlumno(form.value)
+    .subscribe(res => {
+      console.log(res);
+    });
+  }
+
   resetForm(form?: NgForm) {
     if (form) {      
       form.reset();
       this.alumnosService.selectedAlumno = new Alumnos();
     }
   }
+
+  
 
 }

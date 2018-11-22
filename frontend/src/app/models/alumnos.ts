@@ -13,7 +13,7 @@ export class Alumnos {
     // }
 
     _id: string;
-    nocta: string;
+    numero_cuenta: string;
     nombre: string;
     apellido_paterno: string;
     apellido_materno: string;
@@ -23,3 +23,4 @@ export class Alumnos {
     escenario_asignado: string;
     password: string;
 }
+

@@ -8,7 +8,7 @@ import { Alumnos } from '../models/alumnos';
 export class AlumnosService {
 
   selectedAlumno: Alumnos;
-  readonly URL_API = 'http://localhost:3000/api/alumnos';
+  readonly URL_API = 'http://localhost:3000/api/alumnos/';
 
   constructor(private http: HttpClient) { 
     this.selectedAlumno = new Alumnos;
