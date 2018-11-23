@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
       this.alumnosService.login(form.value)
         .subscribe(
           data => {
-            // alert(data['message']);
+            console.log(data);
             if (data['message'] != "Datos Incorrectos") {
               localStorage.setItem('token', data.toString());
+              
               this._router.navigate(['/escenarios']);
             }
             else

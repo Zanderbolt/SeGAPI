@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlumnosService } from 'src/app/services/alumnos.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  tokenActive = false;
+
+
+  constructor(private alumnosService: AlumnosService) {
+    this.alumnosService.getNumeroCuenta()
+    .subscribe(
+      data => this.tokenActive = true,
+      error => this.tokenActive = false
+    )     
+  }
 
   ngOnInit() {
+  }
+
+  logout() {    
+    localStorage.removeItem('token');
   }
 
 }

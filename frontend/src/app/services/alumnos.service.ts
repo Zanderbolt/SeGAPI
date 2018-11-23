@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Alumnos } from '../models/alumnos';
 
 @Injectable({
@@ -25,6 +25,14 @@ export class AlumnosService {
   login(body:any){
     // console.log(body.numero_cuenta);
     return this.http.post('http://localhost:3000/api/alumnos/login/', body);        
+  }
+
+  getNumeroCuenta() {
+    return this.http.get('http://localhost:3000/api/alumnos/username/', {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token'))
+    });    
+    
   }
 
 }

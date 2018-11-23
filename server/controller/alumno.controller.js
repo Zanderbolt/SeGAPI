@@ -11,8 +11,8 @@ alumnosController.getAlumnos = async (req, res) => {
 
 // Obtener un alumno
 alumnosController.getAlumno = async (req, res) => {
-    const alumno = await Alumno.findOn(req.params.id);
-    res.json(alumno);
+    // const alumno = await Alumno.findOne(req.params.id);
+    // res.json(alumno);
 };
 
 //Login
@@ -23,13 +23,10 @@ alumnosController.LogIn = async (req, res, next) => {
     if (alumnos != null) {
         var PWserver = alumnos.password;
         var PWcliente = req.body.password;
-
         if (PWserver == PWcliente) {
             let token = jwt.sign({ numero_cuenta: alumnos.numero_cuenta }, 'secret', { expiresIn: '3h' });
-
             return res.status(200).json(token);
         }
-
         else
             return res.json({ message: 'Datos Incorrectos' })
     }
@@ -48,6 +45,7 @@ alumnosController.createAlumno = async (req, res) => {
         res.status(201).json(task);
     });
 };
+
 // Update un alumno
 alumnosController.updateAlumno = async (req, res) => {
     const { id } = req.params;
@@ -73,6 +71,34 @@ alumnosController.deleteAlumno = async (req, res) => {
     res.json({
         'status': "Alumno Eliminado"
     });
+};
+
+alumnosController.getUsername = async (req, res) => {
+
+    
+    alumnosController.verifyToken(req,res);
+    return res.status(200).json(decodedToken.numero_cuenta);
+
+};
+
+
+
+
+var decodedToken = '';
+//validateToken
+
+alumnosController.verifyToken = async(req,res, next) => {
+    let token = req.query.token;
+
+    jwt.verify(token,'secret', function(err, tokendata){
+        if (err) {
+            return res.status(400).json({message: 'Unahtorized Request'});
+        }
+        if (tokendata) {
+            decodedToken = tokendata;
+            // next();
+        }
+    })
 };
 
 
