@@ -19,8 +19,12 @@ export class AlumnosService {
   }
 
   postAlumno(Alumnos: Alumnos) {
-    return this.http.post(this.URL_API, Alumnos);    
-    
+    return this.http.post(this.URL_API, Alumnos);        
+  }
+
+  login(body:any){
+    // console.log(body.numero_cuenta);
+    return this.http.post('http://localhost:3000/api/alumnos/login/', body);        
   }
 
 }

@@ -8,4 +8,7 @@ router.post('/', alumnoController.createAlumno);
 router.get('/:id', alumnoController.getAlumno);
 router.put('/:id', alumnoController.updateAlumno);
 router.delete('/:id', alumnoController.deleteAlumno);
+
+router.post('/login', alumnoController.LogIn);
+
 module.exports = router;

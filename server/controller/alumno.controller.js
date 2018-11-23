@@ -1,31 +1,56 @@
 const Alumno = require('../models/alumnos')
 const alumnosController = {};
+var jwt = require('jsonwebtoken');
 
 // Obtener todos los alumnos
-alumnosController.getAlumnos =  async (req, res) => {
+alumnosController.getAlumnos = async (req, res) => {
     const alumnos = await Alumno.find();
     res.json(alumnos);
 };
 
+
 // Obtener un alumno
-alumnosController.getAlumno = async (req, res) => {    
-    const alumno = await Alumno.findById(req.params.id);    
+alumnosController.getAlumno = async (req, res) => {
+    const alumno = await Alumno.findOn(req.params.id);
     res.json(alumno);
 };
 
+//Login
+alumnosController.LogIn = async (req, res, next) => {
+    const alumnos = await Alumno.findOne({
+        numero_cuenta: req.body.numero_cuenta
+    });
+    if (alumnos != null) {
+        var PWserver = alumnos.password;
+        var PWcliente = req.body.password;
+
+        if (PWserver == PWcliente) {
+            let token = jwt.sign({ numero_cuenta: alumnos.numero_cuenta }, 'secret', { expiresIn: '3h' });
+
+            return res.status(200).json(token);
+        }
+
+        else
+            return res.json({ message: 'Datos Incorrectos' })
+    }
+    else {
+        return res.json({ message: 'Usuario no Registrado' });
+    }
+};
+
 // Guardar un alumno
-alumnosController.createAlumno =  async (req, res) => {
+alumnosController.createAlumno = async (req, res) => {
     const alumno = new Alumno(req.body);
     await alumno.save((err, task) => {
         if (err) {
-          res.status(500).send(err);
+            res.status(500).send(err);
         }
         res.status(201).json(task);
-      });
+    });
 };
 // Update un alumno
-alumnosController.updateAlumno =  async (req, res) => {
-    const {id} = req.params;
+alumnosController.updateAlumno = async (req, res) => {
+    const { id } = req.params;
     const alumno = {
         numero_cuenta: req.body.numero_cuenta,
         nombre: req.body.nombre,
@@ -35,19 +60,20 @@ alumnosController.updateAlumno =  async (req, res) => {
         grupo: req.body.grupo,
         correo: req.body.correo,
         escenario_asignado: req.body.escenario_asignado
-        
+
     }
-    await Alumno.findByIdAndUpdate(id, {$set: alumno}, { new: true});    
+    await Alumno.findByIdAndUpdate(id, { $set: alumno }, { new: true });
     res.json({
         'status': 'Alumno Updated'
     });
 };
 // Delete un alumno
-alumnosController.deleteAlumno =   async(req, res) => {
+alumnosController.deleteAlumno = async (req, res) => {
     await Alumno.findByIdAndRemove(req.params.id);
     res.json({
         'status': "Alumno Eliminado"
     });
 };
+
 
 module.exports = alumnosController;

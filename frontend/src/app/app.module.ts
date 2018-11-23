@@ -11,7 +11,7 @@ import { ToastrModule } from 'ngx-toastr'
 // HTTPclient
 import {HttpClientModule} from '@angular/common/http'
 // Rutas
-import { Routes, RouterModule } from '@angular/router'
+import { Routes, RouterModule, Router } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { AlumnosComponent } from './components/alumnos/alumnos.component';
