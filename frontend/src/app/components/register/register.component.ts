@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlumnosService } from '../../services/alumnos.service'
 import { NgForm } from '@angular/forms';
 import { Alumnos } from 'src/app/models/alumnos';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ import { Alumnos } from 'src/app/models/alumnos';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private alumnosService: AlumnosService) { }
+  constructor(private alumnosService: AlumnosService,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
   }
@@ -20,8 +22,10 @@ export class RegisterComponent implements OnInit {
   agregarAlumno(form: NgForm) {
     this.alumnosService.postAlumno(form.value)
     .subscribe(res => {
-      console.log(res);
+      console.log(res); 
     });
+    this.toastr.success('Usuario Registrado con éxito', 'Éxito');
+    this.resetForm(form);
   }
 
   resetForm(form?: NgForm) {
