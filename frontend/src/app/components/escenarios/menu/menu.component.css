@@ -1,3 +1,7 @@
 .fontAcme {
     font-family: 'Acme', sans-serif;
 }
+
+.white {
+    background-color: white;
+}

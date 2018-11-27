@@ -18,6 +18,10 @@ app.use(cors({origin: 'http://localhost:4200'}));
 
 // Routes
 app.use('/api/alumnos', require('./routes/alumnos.routes'));
+app.use('/api/unidad01', require('./routes/unidad01.routes'));
+app.use('/api/unidad02', require('./routes/unidad02.routes'));
+app.use('/api/unidad03', require('./routes/unidad03.routes'));
+app.use('/api/unidad04', require('./routes/unidad04.routes'));
 
 // Starting the server
 app.listen(app.get('port'), () => {
