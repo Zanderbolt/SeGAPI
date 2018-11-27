@@ -26,6 +26,9 @@ import { Unidad04Component } from './components/escenarios/unidad04/unidad04.com
 import { MenuComponent } from './components/escenarios/menu/menu.component';
 import { RegisterComponent } from './components/register/register.component';
 import { from } from 'rxjs';
+import { ProfileCardComponent } from './components/escenarios/profile-card/profile-card.component';
+
+
 
 const appRoutes: Routes = [
   {  path: '', component:  HomeComponent },
@@ -51,7 +54,8 @@ const appRoutes: Routes = [
     Unidad03Component,
     Unidad04Component,
     MenuComponent,
-    RegisterComponent     
+    RegisterComponent,
+    ProfileCardComponent,
   ],
   imports: [
     BrowserModule,

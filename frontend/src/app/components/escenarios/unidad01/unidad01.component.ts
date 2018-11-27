@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router'
+
 
 @Component({
   selector: 'app-unidad01',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Unidad01Component implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
   }
+
+  
+
 
 }

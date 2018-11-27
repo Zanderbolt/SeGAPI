@@ -1,6 +1,14 @@
-<h3 align="center" class="fontAcme"> Selecciona la Unidad a la que deseas ingresar :</h3>
+<div class="col-12" *ngIf="!menu" align ="right">
+  <button type="button" name="" id="" class="btn btn-secondary fontAcme" (click)="backToMenu()"> <i class="icon fas fa-arrow-alt-circle-left"></i>
+    Regresar
+  </button>
+  <br>
+</div>
+<div class="col-12" *ngIf="menu">
+  <h3 align="center" class="fontAcme"> Selecciona la Unidad a la que deseas ingresar :</h3>
+</div>
 
-<div class="row" align="center">
+<div class="row fontAcme" align="center" *ngIf="menu">
   <!-- Unidad 1 -->
   <div class="col-6">
     <div class="card bg-light mb-3 fontMerienda" style="width: 18rem;">
@@ -10,13 +18,14 @@
         </div>
         <br>
         <h5 class="card-title">
-           <strong>Unidad I </strong> 
+          <strong>Unidad I </strong>
         </h5>
         <p class="card-text"> Diagnóstico </p>
-        <a  routerLink="/unidad01" class="btn btn-primary btn-block">Ingresar</a>
+        <a class="btn btn-primary btn-block" (click)="mostrarUnidad01()">Ingresar</a>
       </div>
     </div>
   </div>
+
   <!-- Fin Unidad 1 -->
   <!-- Unidad 2 -->
   <div class="col-6">
@@ -30,16 +39,31 @@
           <strong> Unidad II </strong>
         </h5>
         <p class="card-text"> Elaboración de Proyectos y Programas </p>
-        <a routerLink="/unidad02" class="btn btn-primary btn-block">Ingresar</a>
+        <a class="btn btn-primary btn-block" (click)="mostrarUnidad02()">Ingresar</a>
       </div>
     </div>
   </div>
   <!-- Fin Unidad 2 -->
 </div>
 
+<!-- Mostrar Unidad 1  -->
+<div class="row" align="center" *ngIf="unidad01">
+  <div class="col-12">
+    <br>
+    <app-unidad01></app-unidad01>
+  </div>
+</div>
+
+<!-- Mostrar Unidad 2 -->
+<div class="row" align="center" *ngIf="unidad02">
+  <div class="col-12">
+    <br>
+    <app-unidad02></app-unidad02>
+  </div>
+</div>
 <br>
 
-<div class="row" align="center">
+<div class="row fontAcme" align="center" *ngIf="menu">
   <!-- Unidad 3 -->
   <div class="col-6">
     <div class="card bg-light mb-3 fontMerienda" style="width: 18rem;">
@@ -52,7 +76,7 @@
           <strong> Unidad III </strong>
         </h5>
         <p class="card-text"> Ejecución de Proyectos </p>
-        <a routerLink="/unidad03" class="btn btn-primary btn-block">Ingresar</a>
+        <a class="btn btn-primary btn-block" (click)="mostrarUnidad03()">Ingresar</a>
       </div>
     </div>
   </div>
@@ -69,9 +93,26 @@
           <strong> Unidad IV </strong>
         </h5>
         <p class="card-text"> Sistematización </p>
-        <a routerLink="/unidad04" class="btn btn-primary btn-block">Ingresar</a>
+        <a class="btn btn-primary btn-block" (click)="mostrarUnidad04()">Ingresar</a>
       </div>
     </div>
   </div>
   <!-- Fin Unidad 4 -->
 </div>
+
+<!-- Mostrar Unidad 3  -->
+<div class="row" align="center" *ngIf="unidad03">
+  <div class="col-12">
+<br>
+    <app-unidad03></app-unidad03>
+  </div>
+</div>
+
+<!-- Mostrar Unidad 4 -->
+<div class="row" align="center" *ngIf="unidad04">
+  <div class="col-12">
+    <br>
+    <app-unidad04></app-unidad04>
+  </div>
+</div>
+<br>
