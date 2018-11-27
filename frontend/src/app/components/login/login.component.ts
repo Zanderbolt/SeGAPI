@@ -31,9 +31,8 @@ export class LoginComponent implements OnInit {
         .subscribe(
           data => {
             console.log(data);
-            if (data['message'] != "Datos Incorrectos") {
-              localStorage.setItem('token', data.toString());
-              
+            if ( data['message'] != "Datos Incorrectos" && data['message'] != "Usuario no Registrado") {              
+              localStorage.setItem('token', data.toString());              
               this._router.navigate(['/escenarios']);
             }
             else
@@ -41,9 +40,6 @@ export class LoginComponent implements OnInit {
           }
         );
     }
-
-
-
 
     // this.toastr.success('Usuario Registrado con éxito', 'Éxito');
     // this.resetForm(form);
