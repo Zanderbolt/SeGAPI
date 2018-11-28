@@ -11,8 +11,9 @@ alumnosController.getAlumnos = async (req, res) => {
 
 // Obtener un alumno
 alumnosController.getAlumno = async (req, res) => {
-    // const alumno = await Alumno.findOne(req.params.id);
-    // res.json(alumno);
+    const alumno = await Alumno.findOne(
+        {numero_cuenta: req.params.id});
+    res.json(alumno);
 };
 
 //Login
