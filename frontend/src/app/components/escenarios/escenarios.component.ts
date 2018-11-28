@@ -13,7 +13,6 @@ export class EscenariosComponent implements OnInit {
 
   constructor(private alumnosService: AlumnosService,
     private _router: Router) {
-     
     }
 
   ngOnInit() {

@@ -13,6 +13,14 @@ unidad01Controller.createRegister = async (req, res) => {
     });
 };
 
+
+// Obtener laUNidad
+unidad01Controller.getUnidad01 = async (req, res) => {
+    const unidad01 = await Unidad01.findOne(
+        {numero_cuenta: req.params.id});
+    res.json(unidad01);
+};
+
 module.exports = unidad01Controller;
 
 // // Obtener todos los alumnos
