@@ -1,27 +1,33 @@
-
-
-      <div class="card fontAcme">
-        <div class="card-body">
-          <h1 class="card-title" align="center"> Unidad 04 - Sistematización de la Práctica</h1>
-          <div class="form-group" align="center">
-            <strong>
-              <label for="exampleFormControlInput1"  class="tituloInput">Sistematización de la Práctica con referencia:</label>
-            </strong>
-            <textarea class="form-control" rows="15" id="exampleFormControlInput1"> </textarea>
-          </div>
-          <div class="form-group">
-              <div class="row">
-                <div class="col-9">            
-                </div>
-                <div class="col-3">
-                  <label for="exampleFormControlInput1" class="comentarios">Comentarios:</label>
-                  <textarea class="form-control" rows="2" id="exampleFormControlInput1"> </textarea>
-                  <br>
-                  <label for="exampleInputEmail1" class="comentarios">Calificación:</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-              </div>
+<form #unidad04Form="ngForm" (ngSubmit)="agregarUnidad04(unidad04Form)">
+  <div class="card fontAcme">
+    <div class="card-body">
+      <h1 class="card-title" align="center"> Unidad 04 - Sistematización de la Práctica</h1>
+      <div class="form-group" align="center">
+        <strong>
+          <label for="exampleFormControlInput1" class="tituloInput">Sistematización de la Práctica con referencia:</label>
+        </strong>
+        <textarea name="sistematizacion" #sistematizacion="ngModel" [(ngModel)]="unidad04Service.selectedUnidad04.sistematizacion"
+          class="form-control" rows="15"> </textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-9">
+            <!-- Botón de guardar -->
+            <div class="form-group" align="center">
+              <button type="submit" class="btn btn-block btn-success"> <i class="fas fa-save"></i> Guardar </button>
             </div>
-
+          </div>
+          <div class="col-3">
+            <label  for="exampleFormControlInput1" class="comentarios">Comentarios:</label>
+            <textarea disabled name="comentarios" #comentarios="ngModel" [(ngModel)]="unidad04Service.selectedUnidad04.comentarios"
+              class="form-control" rows="2"> </textarea>
+            <br>
+            <label  for="exampleInputEmail1" class="comentarios">Calificación:</label>
+            <input disabled name="calificacion" #calificacion="ngModel" [(ngModel)]="unidad04Service.selectedUnidad04.calificacion"
+              type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+</form>

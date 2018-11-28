@@ -1,52 +1,69 @@
-<div class="card fontAcme">
-  <div class="card-body">
+<form #unidad01Form="ngForm" (ngSubmit)="agregarUnidad01(unidad01Form)">
+  <div class="card fontAcme">
+    <div class="card-body">
       <div class="col-12">
         <h1 class="card-title" align="center"> Unidad 01 - Diagnóstico</h1>
       </div>
-    <div class="form-group">
-      <strong>
-        <label for="exampleFormControlInput1" class="tituloInput">Antecedentes de la Comunidad:</label>
-      </strong>
-      <textarea class="form-control" rows="4" id="exampleFormControlInput1"> </textarea>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-6">
-          <strong>
-            <label for="exampleFormControlInput1" class="tituloInput">Infraestructura y Equipamiento:</label>
-          </strong>
-          <textarea class="form-control" rows="2" id="exampleFormControlInput1"> </textarea>
-        </div>
-        <div class="col-6">
-          <strong>
-            <label for="exampleFormControlInput1" class="tituloInput">Organización Social:</label>
-          </strong>
-          <textarea class="form-control" rows="2" id="exampleFormControlInput1"> </textarea>
+      <div class="form-group">
+        <strong>
+          <label for="exampleFormControlInput1" class="tituloInput">Antecedentes de la Comunidad:</label>
+        </strong>
+        <textarea name="antecedentes_comunidad" #antecedentes_comunidad="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.antecedentes_comunidad" class="form-control" rows="4"> </textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <strong>
+              <label for="exampleFormControlInput1" class="tituloInput">Infraestructura y Equipamiento:</label>
+            </strong>
+            <textarea name="infraestructura_equipamiento" #infraestructura_equipamiento="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.infraestructura_equipamiento"
+              class="form-control" rows="2" id="exampleFormControlInput1"> </textarea>
+          </div>
+          <div class="col-6">
+            <strong>
+              <label for="exampleFormControlInput1" class="tituloInput">Organización Social:</label>
+            </strong>
+            <textarea name="organizacion_social" #organizacion_social="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.organizacion_social"
+              class="form-control" rows="2"> </textarea>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="form-group">
-      <strong>
-        <label for="exampleFormControlInput1" class="tituloInput">Niveles de Vida:</label>
-      </strong>
-      <textarea class="form-control" rows="4" id="exampleFormControlInput1"> </textarea>
-    </div>
-    <div class="form-group">
-      <div class="row">
-        <div class="col-9">
-          <strong>
-            <label for="exampleFormControlInput1" class="tituloInput">Diagnóstico General de la Comunidad</label>
-          </strong>
-          <textarea class="form-control" rows="6" id="exampleFormControlInput1"> </textarea>
+      <div class="form-group">
+        <strong>
+          <label for="exampleFormControlInput1" class="tituloInput">Niveles de Vida:</label>
+        </strong>
+        <textarea name="niveles_de_vida" #niveles_de_vida="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.niveles_de_vida"
+          class="form-control" rows="4"> </textarea>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-9">
+            <strong>
+              <label for="exampleFormControlInput1" class="tituloInput">Diagnóstico General de la Comunidad</label>
+            </strong>
+            <textarea name="diagnostico_general" #diagnostico_general="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.diagnostico_general"
+              class="form-control" rows="3"> </textarea>
+          </div>
+          <div class="col-3">
+            <label for="exampleFormControlInput1" class="comentarios">Comentarios:</label>
+            <textarea disabled name="comentarios" #comentarios="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.comentarios"
+              class="form-control" rows="1"> </textarea>
+            
+            <label for="exampleInputEmail1" class="comentarios">Calificación:</label>
+            <input disabled name="calificacion" #calificacion="ngModel" [(ngModel)]="unidad01Service.selectedUnidad01.calificacion"
+              type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          </div>
         </div>
-        <div class="col-3">
-          <label for="exampleFormControlInput1" class="comentarios">Comentarios:</label>
-          <textarea class="form-control" rows="2" id="exampleFormControlInput1"> </textarea>
-          <br>
-          <label for="exampleInputEmail1" class="comentarios">Calificación:</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+
+      <!-- Botón de guardar -->
+      <div class="form-row">
+        <div class="col-3"></div>
+        <div class="form-group col-md-5" align="center">
+          <button type="submit" class="btn btn-block btn-success"> <i class="fas fa-save"></i> Guardar </button>
         </div>
+        <div class="col-3"></div>
       </div>
     </div>
   </div>
-</div>
+</form>
