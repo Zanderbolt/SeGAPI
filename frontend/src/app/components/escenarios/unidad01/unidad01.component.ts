@@ -17,7 +17,7 @@ import { Unidad01 } from 'src/app/models/unidad01';
 })
 export class Unidad01Component implements OnInit {
   updateAvailable = true;
-  numero_cuenta = '';
+  // numero_cuenta = '';
 
   constructor(private unidad01Service: unidad01Service,
     private alumnosService: AlumnosService,

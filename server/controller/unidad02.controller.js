@@ -2,7 +2,7 @@ const Unidad02 = require('../models/unidad02')
 const unidad02Controller = {};
 var jwt = require('jsonwebtoken');
 
-// Guardar un alumno
+// Guardar Unidad02
 unidad02Controller.createRegister = async (req, res) => {
     const unidad02 = new Unidad02(req.body);
     await unidad02.save((err, task) => {
@@ -10,6 +10,31 @@ unidad02Controller.createRegister = async (req, res) => {
             res.status(500).send(err);
         }
         res.status(201).json(task);
+    });
+};
+
+// Obtener laUNidad
+unidad02Controller.getUnidad02 = async (req, res) => {
+    const unidad02 = await Unidad02.findOne(
+        {numero_cuenta: req.params.id});
+    res.json(unidad02);
+};
+
+// Actualizar Unidad
+unidad02Controller.updateUnidad02 = async (req, res) => {
+    const { id } = req.params;
+    const unidad02 = {
+        justificacion: req.body.justificacion,
+        objetivos_proyecto: req.body.objetivos_proyecto,
+        estrategias: req.body.estrategias,
+        metas: req.body.metas,
+        actividades: req.body.actividades,
+        recursos_empleados: req.body.recursos_empleados,
+        evaluacion_proyecto: req.body.evaluacion_proyecto,        
+    }
+    await Unidad02.findOneAndUpdate({numero_cuenta: id}, { $set: unidad02 }, { new: true });
+    res.json({
+        'status': 'Register Updated!'
     });
 };
 

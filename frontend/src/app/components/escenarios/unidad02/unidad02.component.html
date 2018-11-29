@@ -8,14 +8,14 @@
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Justificación</label>
             </strong>
-            <textarea name="justificacion" #justificacion="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.justificacion"
+            <textarea  required name="justificacion" #justificacion="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.justificacion"
               class="form-control" rows="4"> </textarea>
           </div>
           <div class="col-6">
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Objetivos del Proyecto</label>
             </strong>
-            <textarea name="objetivos_proyecto" #objetivos_proyecto="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.objetivos_proyecto"
+            <textarea  required name="objetivos_proyecto" #objetivos_proyecto="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.objetivos_proyecto"
               class="form-control" rows="4"> </textarea>
           </div>
         </div>
@@ -26,21 +26,21 @@
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Estrategias:</label>
             </strong>
-            <textarea name="estrategias" #estrategias="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.estrategias"
+            <textarea required name="estrategias" #estrategias="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.estrategias"
               class="form-control" rows="2"> </textarea>
           </div>
           <div class="col-4">
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Metas:</label>
             </strong>
-            <textarea name="metas" #metas="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.metas" class="form-control"
+            <textarea required name="metas" #metas="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.metas" class="form-control"
               rows="2"> </textarea>
           </div>
           <div class="col-4">
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Actividades:</label>
             </strong>
-            <textarea name="actividades" #actividades="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.actividades"
+            <textarea required name="actividades" #actividades="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.actividades"
               class="form-control" rows="2"> </textarea>
           </div>
         </div>
@@ -51,14 +51,14 @@
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Recursos Empleados:</label>
             </strong>
-            <textarea name="recursos_empleados" #recursos_empleados="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.recursos_empleados"
+            <textarea  required name="recursos_empleados" #recursos_empleados="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.recursos_empleados"
               class="form-control" rows="4"> </textarea>
           </div>
           <div class="col-6">
             <strong>
               <label for="exampleFormControlInput1" class="tituloInput">Evaluación del Proyecto</label>
             </strong>
-            <textarea name="evaluacion_proyecto" #evaluacion_proyecto="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.evaluacion_proyecto"
+            <textarea required name="evaluacion_proyecto" #evaluacion_proyecto="ngModel" [(ngModel)]="unidad02Service.selectedUnidad02.evaluacion_proyecto"
               class="form-control" rows="4"> </textarea>
           </div>
         </div>
@@ -67,8 +67,11 @@
         <div class="row">
           <div class="col-9">
             <!-- Botón de guardar -->
-            <div class="form-group" align="center">
+            <div *ngIf="!updateAvailable" class="form-group col-md-5" align="center">
               <button type="submit" class="btn btn-block btn-success"> <i class="fas fa-save"></i> Guardar </button>
+            </div>
+            <div *ngIf="updateAvailable" class="form-group col-md-5" align="center">
+              <button type="submit" class="btn btn-block btn-info"> <i class="fas fa-save"></i> Actualizar </button>
             </div>
           </div>
           <div class="col-3">
