@@ -13,6 +13,26 @@ unidad03Controller.createRegister = async (req, res) => {
     });
 };
 
+// Obtener laUNidad
+unidad03Controller.getUnidad03 = async (req, res) => {
+    const unidad03 = await Unidad03.findOne(
+        {numero_cuenta: req.params.id});
+    res.json(unidad03);
+};
+
+// Actualizar Unidad
+unidad03Controller.updateUnidad03 = async (req, res) => {
+    const { id } = req.params;
+    const unidad03 = {
+        informe_actividades: req.body.informe_actividades,           
+    }
+    await Unidad03.findOneAndUpdate({numero_cuenta: id}, { $set: unidad03 }, { new: true });
+    res.json({
+        'status': id
+    });
+};
+
+
 module.exports = unidad03Controller;
 
 // // Obtener todos los alumnos

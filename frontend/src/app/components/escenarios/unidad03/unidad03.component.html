@@ -6,15 +6,18 @@
         <strong>
           <label for="exampleFormControlInput1" class="tituloInput">Informe de Actividades:</label>
         </strong>
-        <textarea name="informe_actividades" #informe_actividades="ngModel" [(ngModel)]="unidad03Service.selectedUnidad03.justificacion"
+        <textarea required name="informe_actividades" #informe_actividades="ngModel" [(ngModel)]="unidad03Service.selectedUnidad03.informe_actividades"
           class="form-control" rows="15"> </textarea>
       </div>
       <div class="form-group">
         <div class="row">
           <div class="col-9">
             <!-- Botón de guardar -->
-            <div class="form-group" align="center">
+            <div *ngIf="!updateAvailable" class="form-group col-md-5" align="center">
               <button type="submit" class="btn btn-block btn-success"> <i class="fas fa-save"></i> Guardar </button>
+            </div>
+            <div *ngIf="updateAvailable" class="form-group col-md-5" align="center">
+              <button type="submit" class="btn btn-block btn-info"> <i class="fas fa-save"></i> Actualizar  </button>
             </div>
           </div>
           <div class="col-3">
