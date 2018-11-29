@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { unidad01Service } from '../../../services/unidad01.service'
 import { AlumnosService } from '../../../services/alumnos.service'
+import { Unidad01 } from 'src/app/models/unidad01';
 
 
 
@@ -22,26 +23,30 @@ export class Unidad01Component implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
-    this.getNumeroCuenta();
-    console.log(this.unidad01Service.getUnidad01());
+    this.unidad01Service.getUnidad01()
+    .subscribe(
+      data => {
+        if (data != null) 
+        { this.unidad01Service.selectedUnidad01.antecedentes_comunidad = data ["antecedentes_comunidad"],
+          this.unidad01Service.selectedUnidad01.infraestructura_equipamiento = data ["infraestructura_equipamiento"],
+          this.unidad01Service.selectedUnidad01.organizacion_social = data ["organizacion_social"],
+          this.unidad01Service.selectedUnidad01.antecedentes_comunidad = data ["antecedentes_comunidad"],
+          this.unidad01Service.selectedUnidad01.niveles_de_vida = data ["niveles_de_vida"],
+          this.unidad01Service.selectedUnidad01.diagnostico_general = data ["diagnostico_general"]}
+        else
+          this.unidad01Service.selectedUnidad01 = new Unidad01
+      }      
+    )
   }
 
   agregarUnidad01(form: NgForm) {
-    form.value["numero_cuenta"] = this.numero_cuenta;
+    form.value["numero_cuenta"] = this.alumnosService.numero_cuenta;
     console.log(form.value);
     this.unidad01Service.postAlumno(form.value)
     .subscribe(res => {
       console.log(res); 
     });
     this.toastr.success('Registro Guardado con éxito!', 'Éxito');     
-  }
-
-  getNumeroCuenta()
-  {
-     this.alumnosService.getNumeroCuenta()
-    .subscribe(
-      data => this.numero_cuenta = data.toString()
-    );
   }
 
 

@@ -6,6 +6,7 @@ import { AlumnosService } from 'src/app/services/alumnos.service';
 import { Alumnos } from '../models/alumnos';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,12 @@ export class unidad01Service {
   readonly URL_API = 'http://localhost:3000/api/unidad01/';
 
   constructor(private http: HttpClient, private alumnosService: AlumnosService) { 
-    this.selectedUnidad01 = new Unidad01;
+   this.selectedUnidad01 = new Unidad01;
+   this.getUnidad01()
+   .subscribe(
+     data => {this.selectedUnidad01.antecedentes_comunidad = data["antecedentes_comunidad"],
+              this.selectedUnidad01.infraestructura_equipamiento = data["infraestructura_equipamiento"]}
+   )
   }
 
 //   getAlumnos() {
@@ -28,24 +34,11 @@ export class unidad01Service {
     return this.http.post(this.URL_API, unidad01);        
   }
 
-  async getUnidad01()
-  {
-        
-    this.temp = "";
-    await this.http.get(this.URL_API + 20096154)
-    .subscribe(
-      data =>alert(data["antecedentes_comunidad"].toString())
-    )
+   getUnidad01()
+  {               
+    return this.http.get(this.URL_API + this.alumnosService.numero_cuenta);        
   }
 
-  getNumeroCuenta() {
-   this.alumnosService.getNumeroCuenta()
-   .subscribe(
-     data => this.numero_cuenta = data.toString()
-   ) 
-      
-    
-  }
 
 //   login(body:any){
 //     // console.log(body.numero_cuenta);

@@ -31,7 +31,8 @@ export class ProfileCardComponent implements OnInit {
       });
   
         let result = await promise; // wait till the promise resolves (*)
-        this.obtenerNombre();            
+        this.obtenerNombre();
+        // alert(this.alumnosService.numero_cuenta);                
   }
 
   async obtenerNombre() {

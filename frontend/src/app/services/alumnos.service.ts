@@ -6,6 +6,7 @@ import { Alumnos } from '../models/alumnos';
   providedIn: 'root'
 })
 export class AlumnosService {
+  numero_cuenta: "";
 
   selectedAlumno: Alumnos;
   readonly URL_API = 'http://localhost:3000/api/alumnos/';
@@ -29,7 +30,11 @@ export class AlumnosService {
 
   login(body:any){
     // console.log(body.numero_cuenta);
-    return this.http.post('http://localhost:3000/api/alumnos/login/', body);        
+
+    //Se guarda el número de cuenta
+    this.numero_cuenta = body.numero_cuenta;      
+    return this.http.post('http://localhost:3000/api/alumnos/login/', body);
+     
   }
 
   getNumeroCuenta() {

@@ -74,9 +74,7 @@ alumnosController.deleteAlumno = async (req, res) => {
     });
 };
 
-alumnosController.getUsername = async (req, res) => {
-
-    
+alumnosController.getUsername = async (req, res) => {  
     alumnosController.verifyToken(req,res);
     return res.status(200).json(decodedToken.numero_cuenta);
 
