@@ -21,6 +21,24 @@ unidad01Controller.getUnidad01 = async (req, res) => {
     res.json(unidad01);
 };
 
+// Actualizar Unidad
+unidad01Controller.updateUnidad01 = async (req, res) => {
+    const { id } = req.params;
+    const unidad01 = {
+        antecedentes_comunidad: req.body.antecedentes_comunidad,
+        infraestructura_equipamiento: req.body.infraestructura_equipamiento,
+        organizacion_social: req.body.organizacion_social,
+        niveles_de_vida: req.body.niveles_de_vida,
+        diagnostico_general: req.body.diagnostico_general,
+        comentarios: req.body.comentarios,
+        calificacion: req.body.calificacion,        
+
+    }
+    await Unidad01.findOneAndUpdate({numero_cuenta: id}, { $set: unidad01 }, { new: true });
+    res.json({
+        'status': id
+    });
+};
 module.exports = unidad01Controller;
 
 // // Obtener todos los alumnos

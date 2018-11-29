@@ -4,9 +4,14 @@ const router = express.Router();
 const unidad01Controller = require('../controller/unidad01.controller');
 
 
-
+// CREATE
 router.post('/', unidad01Controller.createRegister);
+
+// SELECT ONE
 router.get('/:id', unidad01Controller.getUnidad01);
+
+// UPDATE
+router.put('/:id', unidad01Controller.updateUnidad01);
 
 
 // router.get('/username', alumnoController.getUsername)

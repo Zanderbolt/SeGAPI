@@ -66,6 +66,7 @@ alumnosController.updateAlumno = async (req, res) => {
         'status': 'Alumno Updated'
     });
 };
+
 // Delete un alumno
 alumnosController.deleteAlumno = async (req, res) => {
     await Alumno.findByIdAndRemove(req.params.id);

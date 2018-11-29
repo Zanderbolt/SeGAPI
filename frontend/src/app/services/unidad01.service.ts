@@ -30,13 +30,22 @@ export class unidad01Service {
 //     return this.http.get(this.URL_API);    
 //   }
 
+  // Llamada de la API ADD
   postAlumno(unidad01: Unidad01) {
     return this.http.post(this.URL_API, unidad01);        
   }
 
+  // Llamada de la API GET
    getUnidad01()
   {               
     return this.http.get(this.URL_API + this.alumnosService.numero_cuenta);        
+  }
+
+  
+  // Llamada de la API PUT
+  actualizarUnidad01(unidad01: Unidad01)
+  {                   
+    return this.http.put(this.URL_API + this.alumnosService.numero_cuenta, unidad01);
   }
 
 
