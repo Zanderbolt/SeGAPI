@@ -4,6 +4,7 @@ import { AlumnosService } from '../../services/alumnos.service'
 import { NgForm } from '@angular/forms';
 import { Alumnos } from 'src/app/models/alumnos';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
 
   constructor(private alumnosService: AlumnosService,
+              private _router: Router,
               private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class RegisterComponent implements OnInit {
       console.log(res); 
     });
     this.toastr.success('Usuario Registrado con éxito', 'Éxito');
-    this.resetForm(form);
+    this._router.navigate(['/login']);
+    // this.resetForm(form);
   }
 
   resetForm(form?: NgForm) {

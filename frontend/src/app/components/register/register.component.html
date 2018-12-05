@@ -6,6 +6,34 @@
 <div class="container">
   .<div class="card">
     <div class="card-body">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" align="center">¿Docente o Alumno?</h5>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group" align="center">
+                <h4> Alumno </h4>
+                <div class="input-group mb-3">
+                  <input type="radio" name="userType" class="form-control" placeholder="Número de Cuenta">
+                </div>
+              </div>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="col-4">
+              <div class="form-group" align="center">
+                  <h4> Docente </h4>
+                <div class="input-group mb-3">
+                  <input type="radio" name="userType" class="form-control" placeholder="Número de Cuenta">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+
 
       <form #alumnoForm="ngForm" (ngSubmit)="agregarAlumno(alumnoForm)">
         <!-- Primer Grupo -->
@@ -89,13 +117,17 @@
         <!-- Tercer Grupo -->
         <div class="form-row">
           <div class="form-group col-md-12">
-            <label for="inputPassword4">Escenario Asignado</label>
+            <label for="inputPassword4"> Escenario Asignado <i>  (Selecciona uno) </i> </label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text"> <i class="fas fa-home"></i> </span>
               </div>
-              <input type="text" class="form-control" name="escenario_asignado" #escenario_asignado="ngModel"
+              <select type="text" class="form-control" name="escenario_asignado" #escenario_asignado="ngModel"
                 [(ngModel)]="alumnosService.selectedAlumno.escenario_asignado" placeholder="Escenario Asignado">
+                <option value="Las Guásimas">Las Guásimas</option>
+                <option value="Mirador de la Cumbre">Mirador de la Cumbre</option>
+                <option value="El Channal">El Channal</option>
+                </select>
             </div>
           </div>
         </div>
